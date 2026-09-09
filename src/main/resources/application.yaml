@@ -6,6 +6,10 @@ spring:
   application:
     name: hexagonal
 
+  kafka:
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
   data:
     mongodb:
       uri: mongodb://localhost:27017/hexagonal
