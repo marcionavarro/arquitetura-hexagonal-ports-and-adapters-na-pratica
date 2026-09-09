@@ -4,6 +4,7 @@ import com.marcionavarro.hexagonal.adapters.in.controller.mapper.CustomerMapper;
 import com.marcionavarro.hexagonal.adapters.in.controller.request.CustomerRequest;
 import com.marcionavarro.hexagonal.adapters.in.controller.response.CustomerResponse;
 import com.marcionavarro.hexagonal.application.core.domain.Customer;
+import com.marcionavarro.hexagonal.application.ports.in.DeleteCustomerByIdInputPort;
 import com.marcionavarro.hexagonal.application.ports.in.FindCustomerByIdInputPort;
 import com.marcionavarro.hexagonal.application.ports.in.InsertCustomerInputPort;
 import com.marcionavarro.hexagonal.application.ports.in.UpdateCustomerInputPort;
@@ -24,6 +25,9 @@ public class CustomerController {
 
     @Autowired
     private UpdateCustomerInputPort updateCustomerInputPort;
+
+    @Autowired
+    private DeleteCustomerByIdInputPort deleteCustomerByIdInputPort;
 
     @Autowired
     private CustomerMapper customerMapper;
@@ -50,6 +54,12 @@ public class CustomerController {
         Customer customer = customerMapper.toCustomer(customerRequest);
         customer.setId(id);
         updateCustomerInputPort.update(customer, customerRequest.getZipCode());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id) {
+        deleteCustomerByIdInputPort.delete(id);
         return ResponseEntity.noContent().build();
     }
 
