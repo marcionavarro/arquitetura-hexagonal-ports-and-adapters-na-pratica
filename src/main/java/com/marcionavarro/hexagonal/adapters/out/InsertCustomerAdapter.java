@@ -5,6 +5,7 @@ import com.marcionavarro.hexagonal.adapters.out.respository.mapper.CustomerEntit
 import com.marcionavarro.hexagonal.application.core.domain.Customer;
 import com.marcionavarro.hexagonal.application.ports.out.InsertCustomerOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,12 @@ public class InsertCustomerAdapter implements InsertCustomerOutputPort {
 
     @Autowired
     private CustomerEntityMapper customerEntityMapper;
+
+    private final MongoTemplate mongoTemplate;
+
+    public InsertCustomerAdapter(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public void insert(Customer customer) {

@@ -1,17 +1,30 @@
-client:
-  address:
-    url: http://localhost:8082/addresses
+server:
+  port: 8081
 
 spring:
   application:
     name: hexagonal
 
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: root
+      password: example
+      database: hexagonal
+
+  client:
+    address:
+      url: http://localhost:8082/addresses
+
   kafka:
     consumer:
       value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
 
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/hexagonal
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.mongodb.driver: DEBUG
 
 
