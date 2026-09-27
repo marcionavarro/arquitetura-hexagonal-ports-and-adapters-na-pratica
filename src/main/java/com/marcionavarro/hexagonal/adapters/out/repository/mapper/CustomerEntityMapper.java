@@ -1,6 +1,6 @@
-package com.marcionavarro.hexagonal.adapters.out.respository.mapper;
+package com.marcionavarro.hexagonal.adapters.out.repository.mapper;
 
-import com.marcionavarro.hexagonal.adapters.out.respository.entity.CustomerEntity;
+import com.marcionavarro.hexagonal.adapters.out.repository.entity.CustomerEntity;
 import com.marcionavarro.hexagonal.application.core.domain.Customer;
 import org.mapstruct.Mapper;
 

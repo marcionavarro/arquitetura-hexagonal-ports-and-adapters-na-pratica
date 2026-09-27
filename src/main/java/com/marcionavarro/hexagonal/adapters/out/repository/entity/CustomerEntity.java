@@ -1,4 +1,4 @@
-package com.marcionavarro.hexagonal.adapters.out.respository.entity;
+package com.marcionavarro.hexagonal.adapters.out.repository.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
